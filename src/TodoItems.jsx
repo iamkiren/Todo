@@ -6,7 +6,7 @@ import Checkbox from "@mui/material/Checkbox";
 import IconButton from "@mui/material/IconButton";
 import CommentIcon from "@mui/icons-material/Comment";
 
-export default function TodoItems({ todo, remove }) {
+export default function TodoItems({ todo, remove, toggleTodo }) {
   const labelId = `checkbox-list-label-${todo.id}`;
   return (
     <ListItem
@@ -19,7 +19,7 @@ export default function TodoItems({ todo, remove }) {
       disablePadding
     >
       <ListItemButton role={undefined} dense>
-        <ListItemIcon>
+        <ListItemIcon onClick={() => toggleTodo(todo.id)}>
           <Checkbox
             edge="start"
             checked={todo.completed}
