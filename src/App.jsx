@@ -1,11 +1,12 @@
 import TodoList from "./TodoList";
 import CssBaseline from "@mui/material/CssBaseline";
+import Navbar from "./Navbar";
 
 function App() {
   return (
     <>
       <CssBaseline />
-      <h1>ToDo</h1>
+      <Navbar />
       <TodoList />
     </>
   );
