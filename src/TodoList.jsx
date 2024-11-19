@@ -1,6 +1,7 @@
 import React from "react";
 import List from "@mui/material/List";
 import TodoItems from "./TodoItems";
+import TodoForm from "./TodoForm";
 
 export default function TodoList() {
   const initialTodo = [
@@ -30,6 +31,12 @@ export default function TodoList() {
     });
   }
 
+  const addTodo = (text) => {
+    setTodo((prevTodos) => {
+      return [...prevTodos, { text: text, id: 789, completed: false }];
+    });
+  };
+
   return (
     <List sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}>
       {todos.map((todo) => {
@@ -42,6 +49,7 @@ export default function TodoList() {
           />
         );
       })}
+      <TodoForm addTodo={addTodo} />
     </List>
   );
 }
