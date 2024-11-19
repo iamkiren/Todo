@@ -4,14 +4,13 @@ import TodoItems from "./TodoItems";
 import TodoForm from "./TodoForm";
 
 export default function TodoList() {
-  const initialTodo = [
-    { id: "1234", text: "Buy books", completed: false },
-    { id: "1235", text: "Buy pen", completed: false },
-    { id: "1236", text: "Buy files", completed: true },
-    { id: "1237", text: "Buy pencils", completed: false },
-  ];
+  const getInitialData = () => JSON.parse(localStorage.getItem("todos")) || [];
 
-  const [todos, setTodo] = React.useState(initialTodo);
+  const [todos, setTodo] = React.useState(getInitialData);
+
+  React.useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
 
   function removeTodo(id) {
     setTodo((prevTodos) => {
